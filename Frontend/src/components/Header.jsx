@@ -1,24 +1,65 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useSearchParams } from "react-router-dom";
 import { Button } from "./ui/button";
-import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
+import { SignedIn, SignedOut, SignIn, SignInButton, UserButton } from "@clerk/clerk-react";
+import { BriefcaseBusiness, PenBox } from "lucide-react";
 
 export const Header = () => {
+
+  const [showLogin, setShowLogin] = useState(false);
+  const [search, setSearch] = useSearchParams();
+
+  useEffect(() => {
+    if(search.get('sign-in')){
+      setShowLogin(true)
+    }
+  },[search]);
+
+  const handleOverlyClick = (e) => {
+    if(e.target === e.currentTarget){
+      setShowLogin(false);
+      setSearch({})
+    }
+  }
+
   return (
     <>
       <nav className="py-4 flex justify-between items-center">
         <Link>
           <img src="./logo (1).png" alt="logo" className="h-20" />
         </Link>
-        {/* <Button variant="outline">Login</Button> */}
 
+      <div className="flex gap-8">
+        
         <SignedOut>
-          <SignInButton />
+        <Button variant="outline" onClick={() =>setShowLogin(true)}>Login</Button>
         </SignedOut>
         <SignedIn>
-          <UserButton />
+         <Button variant='destructive' className='rounded-full'>
+          <PenBox className="mr-2" />
+          Post a job
+         </Button>
+         <UserButton appearance={{
+          elements:{
+            avatarBox:'h-10 w-10'
+          }
+         }} >
+          <UserButton.MenuItems>
+            <UserButton.Link label="My Jobs" labelIcon={<BriefcaseBusiness size={15} />} href="/my-job" />
+          </UserButton.MenuItems>
+         </UserButton>
         </SignedIn>
+      </div>
       </nav>
+      {
+       showLogin && <div className="fixed inset-0 flex items-center justify-center bg-opacity-50" onClick={handleOverlyClick}>
+        <SignIn
+        signUpForceRedirectUrl="/onboarding"
+        fallbackRedirectUrl="/onboarding"
+        />
+       </div>
+      
+      }
     </>
   );
 };

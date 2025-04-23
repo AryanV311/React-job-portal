@@ -11,6 +11,7 @@ import companies from "../data/companies.json";
 import faq from "../data/faq.json"
 import Autoplay from "embla-carousel-autoplay";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 export const LandingPage = () => {
   return (
@@ -90,12 +91,16 @@ export const LandingPage = () => {
       </section>
 
       <Accordion type="single" collapsible>
-        <AccordionItem value="item-1">
-          <AccordionTrigger>Is it accessible?</AccordionTrigger>
-          <AccordionContent>
-            Yes. It adheres to the WAI-ARIA design pattern.
-          </AccordionContent>
-        </AccordionItem>
+        {
+          faq.map((faq, index) => {
+            return(
+              <AccordionItem key={index} value={`item-${index+1}`}>
+                  <AccordionTrigger>{faq.question}</AccordionTrigger>
+                  <AccordionContent>{faq.answer}</AccordionContent>
+                  </AccordionItem>
+            );
+          })
+        }
       </Accordion>
     </main>
   );
