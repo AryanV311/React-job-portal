@@ -29,9 +29,7 @@ const buttonVariants = cva(
         xl: "h-14 sm:h-16 rounded-md px-14 text-lg sm:text-xl font-bold",
         icon: "size-9", 
       },
-      cursor:{
-        default:"pointer"
-      }
+
     },
     defaultVariants: {
       variant: "default",

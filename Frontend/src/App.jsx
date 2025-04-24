@@ -12,6 +12,7 @@ import { PostJob } from './pages/postJob'
 import { SavedJob } from './pages/SavedJob'
 import { MyJob } from './pages/myJob'
 import { ThemeProvider } from './components/theme-provider'
+import { ProtectedRoute } from './components/ProtectedRoute'
 
 function App() {
 
@@ -25,27 +26,52 @@ function App() {
         },
         {
           path:'/onboarding',
-          element:<Onboarding />
+          
+          element:(
+            <ProtectedRoute>
+              <Onboarding />
+            </ProtectedRoute>
+          )
         },
         {
           path:'/jobs',
-          element:<JobListing />
+          element:(
+            <ProtectedRoute>
+              <JobListing />
+            </ProtectedRoute>
+          )
         },
         {
           path:'/job/:id',
-          element:<Job />
+          element:(
+            <ProtectedRoute>
+              <Job />
+            </ProtectedRoute>
+          )
         },
         {
           path:'/post-job',
-          element:<PostJob />
+          element:(
+            <ProtectedRoute>
+              <PostJob />
+            </ProtectedRoute>
+          )
         },
         {
-          path:'/saved-job',
-          element:<SavedJob />
+          path:'/saved-jobs',
+          element:(
+            <ProtectedRoute>
+              <SavedJob />
+            </ProtectedRoute>
+          )
         },
         {
-          path:'/my-job',
-          element:<MyJob />
+          path:'/my-jobs',
+          element:(
+            <ProtectedRoute>
+              <MyJob />
+            </ProtectedRoute>
+          )
         },
       ]
     }
