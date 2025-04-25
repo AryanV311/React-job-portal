@@ -13,10 +13,11 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { ApplyJobDrawer } from "@/components/apply-job";
-import ApplicationCard from "@/components/application-card";  
+  
 
 import useFetch from "@/hooks/use-fetch";
 import { getSingleJob, updateHiringStatus } from "@/api/apiJobs";
+import ApplicationCard from "@/components/ApplicationCard";
 
 const JobPage = () => {
   const { id } = useParams();
@@ -40,6 +41,9 @@ const JobPage = () => {
       job_id: id,
     }
   );
+
+  console.log("jobbb::", job);
+  console.log("user::", user);
 
   const handleStatusChange = (value) => {
     const isOpen = value === "open";
