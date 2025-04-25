@@ -3,7 +3,6 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { AppLayout } from "./layouts/AppLayout";
 import { Onboarding } from "./pages/Onboarding";
-import { LandingPage } from "./pages/landingPage";
 
 import { ThemeProvider } from "./components/theme-provider";
 import { ProtectedRoute } from "./components/ProtectedRoute";
@@ -12,6 +11,7 @@ import JobListing from "./pages/JobListing";
 import PostJob from "./pages/PostJob";
 import SavedJobs from "./pages/SavedJob";
 import MyJobs from "./pages/MyJob";
+import { LandingPage } from "./pages/LandingPage";
 
 function App() {
   const router = createBrowserRouter([
