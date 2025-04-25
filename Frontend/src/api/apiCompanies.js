@@ -1,5 +1,6 @@
 import supabaseClient, { supabaseUrl } from "@/utils/supabase";
 
+
 // Fetch Companies
 export async function getCompanies(token) {
   const supabase = await supabaseClient(token);
@@ -16,7 +17,7 @@ export async function getCompanies(token) {
 // Add Company
 export async function addNewCompany(token, _, companyData) {
   const supabase = await supabaseClient(token);
-
+ 
   const random = Math.floor(Math.random() * 90000);
   const fileName = `logo-${random}-${companyData.name}`;
 
