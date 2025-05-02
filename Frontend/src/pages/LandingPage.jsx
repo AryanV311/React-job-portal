@@ -22,7 +22,7 @@ export const LandingPage = () => {
           <span className="flex items-center gap-2 sm:gap-6">
             and get{" "}
             <img
-              src="./logo (1).png"
+              src="./logo.png"
               alt="hirrd"
               className="h-14 sm:h-24 lg:h-32"
             />

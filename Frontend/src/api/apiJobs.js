@@ -42,8 +42,9 @@ export async function getSavedJobs(token) {
     return data;
   }
 
-  export async function saveJob(token, { alreadySaved }, saveData) {
+  export async function saveJob(token,{alreadySaved}, saveData) {
     const supabase = await supabaseClient(token);
+    
   
     if (alreadySaved) {
       // If the job is already saved, remove it
@@ -73,6 +74,8 @@ export async function getSavedJobs(token) {
       return data;
     }
   }
+
+  
 
   export async function getSingleJob(token, { job_id }) {
     const supabase = await supabaseClient(token);
